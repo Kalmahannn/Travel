@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="away" xml:space="preserve">
+    <value>Away from monotonous life</value>
+  </data>
+  <data name="Magical Travel" xml:space="preserve">
+    <value>Magical Travel</value>
+  </data>
+  <data name="If" xml:space="preserve">
+    <value>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $.17 each.</value>
+  </data>
+  <data name="Get Started" xml:space="preserve">
+    <value>Get Started</value>
+  </data>
+  <data name="Flights" xml:space="preserve">
+    <value>Flights</value>
+  </data>
+  <data name="Hotels" xml:space="preserve">
+    <value>Hotels</value>
+  </data>
+  <data name="Holidays" xml:space="preserve">
+    <value>Holidays</value>
+  </data>
+  <data name="Search Hotels" xml:space="preserve">
+    <value>Search Hotels</value>
+  </data>
+  <data name="Search flights" xml:space="preserve">
+    <value>Search flights</value>
+  </data>
+  <data name="We " xml:space="preserve">
+    <value>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day.</value>
+  </data>
+  <data name="Popular Destinations" xml:space="preserve">
+    <value>Popular Destinations</value>
+  </data>
+  <data name="Mountain River" xml:space="preserve">
+    <value>Mountain River</value>
+  </data>
+  <data name="Paragua" xml:space="preserve">
+    <value>Paragua</value>
+  </data>
+  <data name="Dream City" xml:space="preserve">
+    <value>Dream City</value>
+  </data>
+  <data name="Paris" xml:space="preserve">
+    <value>Paris</value>
+  </data>
+  <data name="Cloud Mountain" xml:space="preserve">
+    <value>Cloud Mountain</value>
+  </data>
+  <data name="Sri Lanka" xml:space="preserve">
+    <value>Sri Lanka</value>
+  </data>
+  <data name="Well " xml:space="preserve">
+    <value>Well educated, intellectual people, especially scientists at all times demonstrate considerably.</value>
+  </data>
+  <data name="Cheap Packages" xml:space="preserve">
+    <value>Cheap Packages</value>
+  </data>
+  <data name="New York" xml:space="preserve">
+    <value>New York</value>
+  </data>
+  <data name="Maldives" xml:space="preserve">
+    <value>Maldives</value>
+  </data>
+  <data name="Nepal" xml:space="preserve">
+    <value>Nepal</value>
+  </data>
+  <data name="Thiland" xml:space="preserve">
+    <value>Thiland</value>
+  </data>
+  <data name="Singapore" xml:space="preserve">
+    <value>Singapore</value>
+  </data>
+  <data name="Luxury Packages" xml:space="preserve">
+    <value>Luxury Packages</value>
+  </data>
+  <data name="Camping Packages" xml:space="preserve">
+    <value>Camping Packages</value>
+  </data>
+  <data name="We all" xml:space="preserve">
+    <value>We all live in an age that belongs to the young at heart. Life that is.</value>
+  </data>
+  <data name="The " xml:space="preserve">
+    <value>The preservation of human life is the ultimate value, a pillar of ethics and the foundation.</value>
+  </data>
+  <data name="Cruise Booking" xml:space="preserve">
+    <value>Cruise Booking</value>
+  </data>
+  <data name="I" xml:space="preserve">
+    <value>I was always somebody who felt quite sorry for myself, what I had not got compared.</value>
+  </data>
+  <data name="To Do List" xml:space="preserve">
+    <value>To Do List</value>
+  </data>
+  <data name="The following " xml:space="preserve">
+    <value>The following article covers a topic that has recently moved to center stage–at least it seems.</value>
+  </data>
+  <data name="Food Features" xml:space="preserve">
+    <value>Food Features</value>
+  </data>
+  <data name="There" xml:space="preserve">
+    <value>There are many kinds of narratives and organizing principles. Science is driven by evidence.</value>
+  </data>
+  <data name="The French " xml:space="preserve">
+    <value>The French Revolution constituted for the conscience of the dominant aristocratic class a fall from </value>
+  </data>
+  <data name="Do you want" xml:space="preserve">
+    <value>Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills, the bigger the payoff you.</value>
+  </data>
+  <data name="Harriet Maxwell" xml:space="preserve">
+    <value>Гарриет Максвелл</value>
+  </data>
+  <data name="A" xml:space="preserve">
+    <value>A purpose is the eternal condition for success. Every former smoker can tell you just how hard it is to stop smoking cigarettes. However.</value>
+  </data>
+  <data name="Carolyn Craig" xml:space="preserve">
+    <value>Carolyn Craig</value>
+  </data>
+  <data name="B" xml:space="preserve">
+    <value>Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills, the bigger the payoff you.</value>
+  </data>
+  <data name="C" xml:space="preserve">
+    <value>A purpose is the eternal condition for success. Every former smoker can tell you just how hard it is to stop smoking cigarettes. However.</value>
+  </data>
+  <data name="Did not find your Package?" xml:space="preserve">
+    <value>Did not find your Package?</value>
+  </data>
+  <data name="Feel free to ask us." xml:space="preserve">
+    <value>Feel free to ask us.</value>
+  </data>
+  <data name="We‘ll make it for you" xml:space="preserve">
+    <value>We‘ll make it for you</value>
+  </data>
+  <data name="L" xml:space="preserve">
+    <value>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.</value>
+  </data>
+  <data name="Latest " xml:space="preserve">
+    <value>Latest from Our Blog</value>
+  </data>
+  <data name="With" xml:space="preserve">
+    <value>With the exception of Nietzsche, no other madman has contributed so much to human sanity as has.</value>
+  </data>
+  <data name="Travel" xml:space="preserve">
+    <value>Travel</value>
+  </data>
+  <data name="Life Style" xml:space="preserve">
+    <value>Life Style</value>
+  </data>
+  <data name="Low " xml:space="preserve">
+    <value>Low Cost Advertising</value>
+  </data>
+  <data name="LocalizerAcres" xml:space="preserve">
+    <value>LocalizerAcres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.</value>
+  </data>
+  <data name="31st January,2018" xml:space="preserve">
+    <value>31st January,2018</value>
+  </data>
+  <data name="Creative Outdoor Ads" xml:space="preserve">
+    <value>Creative Outdoor Ads</value>
+  </data>
+  <data name="Acres" xml:space="preserve">
+    <value>"Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.</value>
+  </data>
+  <data name="It's Classified How To Utilize Free" xml:space="preserve">
+    <value>It's Classified How To Utilize Free</value>
+  </data>
+  <data name="Low Cost Advertising" xml:space="preserve">
+    <value>Low Cost Advertising</value>
+  </data>
+  <data name="About Agency" xml:space="preserve">
+    <value>About Agency</value>
+  </data>
+  <data name="The world" xml:space="preserve">
+    <value>"The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point</value>
+  </data>
+  <data name="Navigation Links" xml:space="preserve">
+    <value>Navigation Links</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Feature" xml:space="preserve">
+    <value>Feature</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Portfolio" xml:space="preserve">
+    <value>Portfolio</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>Pricing</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="For business" xml:space="preserve">
+    <value>For business professionals caught between high OEM price and mediocre print and graphic output.</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="Adults" xml:space="preserve">
+    <value>Adults</value>
+  </data>
+  <data name="Child" xml:space="preserve">
+    <value>Child</value>
+  </data>
+  <data name="Other issues we can help you with" xml:space="preserve">
+    <value>Other issues we can help you with</value>
+  </data>
+</root>

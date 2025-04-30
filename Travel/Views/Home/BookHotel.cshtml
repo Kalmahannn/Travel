@@ -1,0 +1,104 @@
+﻿@* 1.3.1 Передача из представлений в контроллеры*@
+@model TravelistaMVC.Models.HotelBooking
+
+@{
+    ViewData["Title"] = "Book a Hotel";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background-color: #f4f8fb;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        color: #2c3e50;
+        margin-top: 40px;
+        font-weight: 600;
+    }
+
+    .modern-form {
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        margin-top: 20px;
+    }
+
+    .form-control {
+        padding: 12px 14px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 15px;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        padding: 12px;
+        font-weight: bold;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .alert {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 6px;
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+</style>
+
+<div class="container">
+    <h2 class="text-center">Hotel Booking Form</h2>
+
+    <form asp-action="BookHotel" method="post" class="w-50 mx-auto modern-form">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter your name" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@mail.com", type = "email" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CheckInDate)
+            @Html.TextBoxFor(m => m.CheckInDate, new { @class = "form-control", type = "date" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CheckOutDate)
+            @Html.TextBoxFor(m => m.CheckOutDate, new { @class = "form-control", type = "date" })
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Book Now</button>
+    </form>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success mt-4 text-center">@TempData["Message"]</div>
+    }
+</div>

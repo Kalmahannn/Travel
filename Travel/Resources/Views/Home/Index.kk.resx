@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="away" xml:space="preserve">
+    <value>Монотонды өмірден алыс</value>
+  </data>
+  <data name="Magical Travel" xml:space="preserve">
+    <value>Сиқырлы саяхат</value>
+  </data>
+  <data name="If" xml:space="preserve">
+    <value>Егер сіз интернеттен бос кассеталарды қарасаңыз, баға айырмашылығынан қатты абдырап қалуыңыз мүмкін. Сіз кейбіреулерін $сияқты төмен бағамен көре аласыз.Әрқайсысы 17.</value>
+  </data>
+  <data name="Get Started" xml:space="preserve">
+    <value>Жұмысты Бастау</value>
+  </data>
+  <data name="Flights" xml:space="preserve">
+    <value>Рейстер</value>
+  </data>
+  <data name="Hotels" xml:space="preserve">
+    <value>Қонақ үйлер</value>
+  </data>
+  <data name="Holidays" xml:space="preserve">
+    <value>Мерекелер</value>
+  </data>
+  <data name="Search Hotels" xml:space="preserve">
+    <value>Қонақүйлерді Іздеу</value>
+  </data>
+  <data name="Search flights" xml:space="preserve">
+    <value>Әуе билеттерін іздеу</value>
+  </data>
+  <data name="We " xml:space="preserve">
+    <value>Біз бәріміз жүрегімізде жастарға тиесілі заманда өмір сүріп жатырмыз. Өте жылдам болып бара жатқан өмір, күн.</value>
+  </data>
+  <data name="Popular Destinations" xml:space="preserve">
+    <value>Танымал Бағыттар</value>
+  </data>
+  <data name="Mountain River" xml:space="preserve">
+    <value>Тау Өзені</value>
+  </data>
+  <data name="Paragua" xml:space="preserve">
+    <value>Парагуа</value>
+  </data>
+  <data name="Dream City" xml:space="preserve">
+    <value>Арман Қала</value>
+  </data>
+  <data name="Paris" xml:space="preserve">
+    <value>Париж</value>
+  </data>
+  <data name="Cloud Mountain" xml:space="preserve">
+    <value>Бұлтты Тау</value>
+  </data>
+  <data name="Sri Lanka" xml:space="preserve">
+    <value>Шри-Ланка</value>
+  </data>
+  <data name="Well " xml:space="preserve">
+    <value>Жақсы білімді, интеллектуалды адамдар, әсіресе ғалымдар барлық уақытта айтарлықтай белсенділік көрсетті.</value>
+  </data>
+  <data name="Cheap Packages" xml:space="preserve">
+    <value>Арзан пакеттер</value>
+  </data>
+  <data name="New York" xml:space="preserve">
+    <value>Нью-Йорк</value>
+  </data>
+  <data name="Maldives" xml:space="preserve">
+    <value>Мальдив аралдары</value>
+  </data>
+  <data name="Nepal" xml:space="preserve">
+    <value>Непал</value>
+  </data>
+  <data name="Thiland" xml:space="preserve">
+    <value>Таиланд</value>
+  </data>
+  <data name="Singapore" xml:space="preserve">
+    <value>Сингапур</value>
+  </data>
+  <data name="Luxury Packages" xml:space="preserve">
+    <value>Сәнді пакеттер</value>
+  </data>
+  <data name="Camping Packages" xml:space="preserve">
+    <value>Кемпинг пакеттері</value>
+  </data>
+  <data name="We all" xml:space="preserve">
+    <value>Біз бәріміз жас жүрекке тиесілі дәуірде өмір сүріп жатырмыз. Өмір, яғни.</value>
+  </data>
+  <data name="The " xml:space="preserve">
+    <value>Адам өмірін сақтау-ең жоғары құндылық, Этика тірегі және іргетас.</value>
+  </data>
+  <data name="Cruise Booking" xml:space="preserve">
+    <value>Круизді брондау</value>
+  </data>
+  <data name="I" xml:space="preserve">
+    <value>Мен әрқашан өзіме қатты өкінетін адам болдым, өйткені мен басқа біреуге тең келе алмадым.</value>
+  </data>
+  <data name="To Do List" xml:space="preserve">
+    <value>Істер тізімі</value>
+  </data>
+  <data name="The following " xml:space="preserve">
+    <value>Келесі мақалада жақында бірінші орынға шыққан тақырып қарастырылады-кем дегенде солай көрінеді.</value>
+  </data>
+  <data name="Food Features" xml:space="preserve">
+    <value>Тағамның ерекшеліктері</value>
+  </data>
+  <data name="There" xml:space="preserve">
+    <value>Тағамның ерекшеліктеріхабарлаудың және ұйымдастырушылық принциптердің көптеген түрлері бар. Ғылым дәлелдерге негізделген.</value>
+  </data>
+  <data name="The French " xml:space="preserve">
+    <value>Француз революциясы ар-ұждан үшін үстем ақсүйектер класының құлдырауын белгіледі</value>
+  </data>
+  <data name="Do you want" xml:space="preserve">
+    <value>Одан да табысты болғыңыз келе ме? Оқу мен өсуді жақсы көруді үйреніңіз. Сіз өзіңіздің дағдыларыңызды жақсартуға неғұрлым көп күш салсаңыз, соғұрлым көп қайтарым аласыз.</value>
+  </data>
+  <data name="Harriet Maxwell" xml:space="preserve">
+    <value>Гарриет Максвелл</value>
+  </data>
+  <data name="A" xml:space="preserve">
+    <value>Мақсат-сәттіліктің Мәңгілік шарты. Әрбір бұрынғы темекі шегуші темекіні тастау қаншалықты қиын екенін айта алады. Алайда.</value>
+  </data>
+  <data name="Carolyn Craig" xml:space="preserve">
+    <value>Кэролин Крейг</value>
+  </data>
+  <data name="B" xml:space="preserve">
+    <value>Одан да табысты болғыңыз келе ме? Оқу мен өсуді жақсы көруді үйреніңіз. Сіз өзіңіздің дағдыларыңызды жақсартуға неғұрлым көп күш салсаңыз, соғұрлым көп қайтарым аласыз.</value>
+  </data>
+  <data name="C" xml:space="preserve">
+    <value>Мақсат-сәттіліктің Мәңгілік шарты. Әрбір бұрынғы темекі шегуші темекіні тастау қаншалықты қиын екенін айта алады. Алайда.</value>
+  </data>
+  <data name="Did not find your Package?" xml:space="preserve">
+    <value>Өз пакетін таппадыңыз ба?</value>
+  </data>
+  <data name="Feel free to ask us." xml:space="preserve">
+    <value>Бізден сұраудан тартынбаңыз.</value>
+  </data>
+  <data name="We‘ll make it for you" xml:space="preserve">
+    <value>Біз мұны сіз үшін жасаймыз</value>
+  </data>
+  <data name="L" xml:space="preserve">
+    <value>орынсыз мінез-құлық жиі мазақ етіледі, өйткені" ұлдар-ұлдар", әйелдер мінез-құлықтың жоғары стандарттарына тап болады, әсіресе жұмыс орнында. Сондықтан біздің жұмыстағы мінез-құлқымыздың мінсіз болуы өте маңызды. орынсыз мінез-құлық жиі мазақ болады.</value>
+  </data>
+  <data name="Latest " xml:space="preserve">
+    <value>Біздің блогтың соңғы жаңалықтары</value>
+  </data>
+  <data name="With" xml:space="preserve">
+    <value>Ницшеден басқа ешбір жынды адамның ақыл-ойының дамуына көп үлес қосқан жоқ.</value>
+  </data>
+  <data name="Travel" xml:space="preserve">
+    <value>Саяхат</value>
+  </data>
+  <data name="Life Style" xml:space="preserve">
+    <value>Өмір салты</value>
+  </data>
+  <data name="Low " xml:space="preserve">
+    <value>Жарнаманың төмен құны</value>
+  </data>
+  <data name="LocalizerAcres" xml:space="preserve">
+    <value>Acres of Diamonds Лок локализаторы сіз осы әйгілі оқиғаны оқыдыңыз немесе, ең болмағанда, ол сізбен байланысты болды. Фермер.</value>
+  </data>
+  <data name="31st January,2018" xml:space="preserve">
+    <value>2018 жылғы 31 қаңтар</value>
+  </data>
+  <data name="Creative Outdoor Ads" xml:space="preserve">
+    <value>Шығармашылық сыртқы жарнама</value>
+  </data>
+  <data name="Acres" xml:space="preserve">
+    <value>"Гауһар тастардың акрлары сіз бұл әйгілі оқиғаны оқыдыңыз немесе кем дегенде ол туралы естідіңіз. Фермер.</value>
+  </data>
+  <data name="It's Classified How To Utilize Free" xml:space="preserve">
+    <value>Тегін пайдалану сияқты құпия</value>
+  </data>
+  <data name="Low Cost Advertising" xml:space="preserve">
+    <value>Төмен Құны Жарнама</value>
+  </data>
+  <data name="About Agency" xml:space="preserve">
+    <value>Агенттік туралы</value>
+  </data>
+  <data name="The world" xml:space="preserve">
+    <value>"Әлем соншалықты жылдам болды, адамдар тұрып, ақпарат бетін оқығысы келмейді, олар презентацияға қарап, хабарламаны түсінеді. Оған жетті,</value>
+  </data>
+  <data name="Navigation Links" xml:space="preserve">
+    <value>Навигациялық сілтемелер</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Үй</value>
+  </data>
+  <data name="Feature" xml:space="preserve">
+    <value>Ерекшелігі</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Қызметтер</value>
+  </data>
+  <data name="Portfolio" xml:space="preserve">
+    <value>Портфолио</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Команда</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>Баға белгілеу</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Блог</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Байланыс</value>
+  </data>
+  <data name="Newsletter" xml:space="preserve">
+    <value>Ақпараттық бюллетень</value>
+  </data>
+  <data name="For business" xml:space="preserve">
+    <value>OEM жоғары бағасы мен басып шығару мен графиканың орташа сапасы арасында қалған мамандар үшін.</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Бастап</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Кімге</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Бастау</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Қайту</value>
+  </data>
+  <data name="Adults" xml:space="preserve">
+    <value>Ересектер</value>
+  </data>
+  <data name="Child" xml:space="preserve">
+    <value>Бала</value>
+  </data>
+  <data name="Other issues we can help you with" xml:space="preserve">
+    <value>Біз сізге көмектесе алатын басқа сұрақтар</value>
+  </data>
+</root>

@@ -1,0 +1,721 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.Razor
+@using Microsoft.AspNetCore.Mvc
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IViewLocalizer Localizer
+
+@* <h1>@Localizer["WelcomeText2"]</h1> *@
+
+
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- start banner Area -->
+<section class="banner-area relative">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row fullscreen align-items-center justify-content-between">
+			<div class="col-lg-6 col-md-6 banner-left">
+				<h6 class="text-white">@Localizer["away"]</h6>
+				<h1 class="text-white">@Localizer["Magical Travel"]</h1>
+				<p class="text-white">
+					@Localizer["If"]
+				</p>
+				<a href="#" class="primary-btn text-uppercase">>@Localizer["Get Started"]</a>
+			</div>
+			<div class="col-lg-4 col-md-6 banner-right">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="flight" aria-selected="true">@Localizer["Flights"]</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel" aria-selected="false">@Localizer["Hotels"]</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="holiday-tab" data-toggle="tab" href="#holiday" role="tab" aria-controls="holiday" aria-selected="false">@Localizer["Holidays"]</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+						<form class="form-wrap">
+							<input type="text" class="form-control" name="name" placeholder="@Localizer["From"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["From"]'">
+							<input type="text" class="form-control" name="to" placeholder="@Localizer["To"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["To"]'">
+							<input type="text" class="form-control date-picker" name="start" placeholder="@Localizer["Start"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Start"]'">
+							<input type="text" class="form-control date-picker" name="return" placeholder="@Localizer["Return"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Return"]'">
+							<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="@Localizer["Adults"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Adults"]'">
+							<input type="number" min="1" max="20" class="form-control" name="child" placeholder="@Localizer["Child"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Child"]'">
+							<a href="#" class="primary-btn text-uppercase">@Localizer["Search flights"]</a>
+						</form>
+
+					</div>
+					<div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
+						<form class="form-wrap">
+							<input type="text" class="form-control" name="name" placeholder="@Localizer["From"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["From"]'">
+							<input type="text" class="form-control" name="to" placeholder="@Localizer["To"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["To"]'">
+							<input type="text" class="form-control date-picker" name="start" placeholder="@Localizer["Start"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Start"]'">
+							<input type="text" class="form-control date-picker" name="return" placeholder="@Localizer["Return"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Return"]'">
+							<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="@Localizer["Adults"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Adults"]'">
+							<input type="number" min="1" max="20" class="form-control" name="child" placeholder="@Localizer["Child"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Child"]'">
+							<a href="#" class="primary-btn text-uppercase">@Localizer["Search flights"]</a>
+						</form>
+
+					</div>
+					<div class="tab-pane fade" id="holiday" role="tabpanel" aria-labelledby="holiday-tab">
+						<form class="form-wrap">
+							<input type="text" class="form-control" name="name" placeholder="@Localizer["From"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["From"]'">
+							<input type="text" class="form-control" name="to" placeholder="@Localizer["To"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["To"]'">
+							<input type="text" class="form-control date-picker" name="start" placeholder="@Localizer["Start"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Start"]'">
+							<input type="text" class="form-control date-picker" name="return" placeholder="@Localizer["Return"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Return"]'">
+							<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="@Localizer["Adults"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Adults"]'">
+							<input type="number" min="1" max="20" class="form-control" name="child" placeholder="@Localizer["Child"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["Child"]'">
+							<a href="#" class="primary-btn text-uppercase">@Localizer["Search flights"]</a>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+<!-- Start popular-destination Area -->
+<section class="popular-destination-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-70 col-lg-8">
+				<div class="title text-center">
+					<h1 class="mb-10">@Localizer["Popular Destinations"]</h1>
+					<p>@Localizer["We "]</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="single-destination relative">
+					<div class="thumb relative">
+						<div class="overlay overlay-bg"></div>
+						<img class="img-fluid" src="img/d1.jpg" alt="">
+					</div>
+					<div class="desc">
+						<a href="#" class="price-btn">$150</a>
+						<h4>@Localizer["Mountain River"]</h4>
+						<p>@Localizer["Paragua"]y</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="single-destination relative">
+					<div class="thumb relative">
+						<div class="overlay overlay-bg"></div>
+						<img class="img-fluid" src="img/d2.jpg" alt="">
+					</div>
+					<div class="desc">
+						<a href="#" class="price-btn">$250</a>
+						<h4>@Localizer["Dream City"]</h4>
+						<p>@Localizer["Paris"]</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="single-destination relative">
+					<div class="thumb relative">
+						<div class="overlay overlay-bg"></div>
+						<img class="img-fluid" src="img/d3.jpg" alt="">
+					</div>
+					<div class="desc">
+						<a href="#" class="price-btn">$350</a>
+						<h4>@Localizer["Cloud Mountain"]</h4>
+						<p>@Localizer["Sri Lanka"]</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End popular-destination Area -->
+<!-- Start price Area -->
+<section class="price-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-70 col-lg-8">
+				<div class="title text-center">
+					<h1 class="mb-10">We Provide Affordable Prices</h1>
+					<p>@Localizer["Well "]</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="single-price">
+					<h4>@Localizer["Cheap Packages"]</h4>
+					<ul class="price-list">
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["New York"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Maldives"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Sri Lanka"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Nepal"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Thiland"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Singapore"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="single-price">
+					<h4>@Localizer["Luxury Packages"]</h4>
+					<ul class="price-list">
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["New York"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Maldives"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Sri Lanka"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Nepal"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Thiland"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Singapore"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="single-price">
+					<h4>@Localizer["Camping Packages"]</h4>
+					<ul class="price-list">
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["New York"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Maldives"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Sri Lanka"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Nepal"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Thiland"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>@Localizer["Singapore"]</span>
+							<a href="#" class="price-btn">$1500</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End price Area -->
+<!-- Start other-issue Area -->
+<section class="other-issue-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-70 col-lg-9">
+				<div class="title text-center">
+					<p>@Localizer["We all"]</p>
+					<h1 class="mb-10">@Localizer["Other issues we can help you with"]</h1>
+					<p>@Localizer["We all"]</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="img/o1.jpg" alt="">
+					</div>
+					<a href="#">
+						<h4>Rent a Car</h4>
+					</a>
+					<p>
+						@Localizer["The "]"
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="img/o2.jpg" alt="">
+					</div>
+					<a href="#">
+						<h4>@Localizer["Cruise Booking"]</h4>
+					</a>
+					<p>
+						@Localizer["I"]
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="img/o3.jpg" alt="">
+					</div>
+					<a href="#">
+						<h4>@Localizer["To Do List"]</h4>
+					</a>
+					<p>
+						@Localizer["The following"]
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="img/o4.jpg" alt="">
+					</div>
+					<a href="#">
+						<h4>@Localizer["Food Features"]</h4>
+					</a>
+					<p>
+						@Localizer["There"]"
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End other-issue Area -->
+<!-- Start testimonial Area -->
+<section class="testimonial-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-70 col-lg-8">
+				<div class="title text-center">
+					<h1 class="mb-10">Testimonial from our Clients</h1>
+					<p>@Localizer["The French  "]</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="active-testimonial">
+				<div class="single-testimonial item d-flex flex-row">
+					<div class="thumb">
+						<img class="img-fluid" src="img/elements/user1.png" alt="">
+					</div>
+					<div class="desc">
+						<p>
+							@Localizer["Do you want "]
+						</p>
+						<h4>@Localizer["Harriet Maxwell"]</h4>
+						<div class="star">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+						</div>
+					</div>
+				</div>
+				<div class="single-testimonial item d-flex flex-row">
+					<div class="thumb">
+						<img class="img-fluid" src="img/elements/user2.png" alt="">
+					</div>
+					<div class="desc">
+						<p>
+							@Localizer["A"]"
+						</p>
+						<h4>@Localizer["Carolyn Craig"]</h4>
+						<div class="star">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						</div>
+					</div>
+				</div>
+				<div class="single-testimonial item d-flex flex-row">
+					<div class="thumb">
+						<img class="img-fluid" src="img/elements/user1.png" alt="">
+					</div>
+					<div class="desc">
+						<p>
+							@Localizer["B"]
+						</p>
+						<h4>@Localizer["Harriet Maxwell"]</h4>
+						<div class="star">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+						</div>
+					</div>
+				</div>
+				<div class="single-testimonial item d-flex flex-row">
+					<div class="thumb">
+						<img class="img-fluid" src="img/elements/user2.png" alt="">
+					</div>
+					<div class="desc">
+						<p>
+							@Localizer["C"]"
+						</p>
+						<h4>@Localizer["Carolyn Craig"]</h4>
+						<div class="star">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						</div>
+					</div>
+				</div>
+				<div class="single-testimonial item d-flex flex-row">
+					<div class="thumb">
+						<img class="img-fluid" src="img/elements/user1.png" alt="">
+					</div>
+					<div class="desc">
+						<p>
+							@Localizer["B"]"
+						</p>
+						<h4>@Localizer["Harriet Maxwell"]</h4>
+						<div class="star">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+						</div>
+					</div>
+				</div>
+				<div class="single-testimonial item d-flex flex-row">
+					<div class="thumb">
+						<img class="img-fluid" src="img/elements/user2.png" alt="">
+					</div>
+					<div class="desc">
+						<p>
+							@Localizer["C"]"
+						</p>
+						<h4>@Localizer["Carolyn Craig"]</h4>
+						<div class="star">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End testimonial Area -->
+<!-- Start home-about Area -->
+<section class="home-about-area">
+	<div class="container-fluid">
+		<div class="row align-items-center justify-content-end">
+			<div class="col-lg-6 col-md-12 home-about-left">
+				<h1>
+			
+					@Localizer["Did not find your Package?"]" <br>
+					@Localizer["Feel free to ask us. "]<br>
+					@Localizer["We‘ll make it for you"]
+				</h1>
+				<p>
+					@Localizer["L"]"
+				</p>
+				<a href="#" class="primary-btn text-uppercase">request custom price</a>
+			</div>
+			<div class="col-lg-6 col-md-12 home-about-right no-padding">
+				<img class="img-fluid" src="img/about-img.jpg" alt="">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End home-about Area -->
+<!-- Start blog Area -->
+<section class="recent-blog-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-60 col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-10">@Localizer["Latest "]</h1>
+					<p>@Localizer["With"]</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="active-recent-blog-carusel">
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="img/b1.jpg" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">@Localizer["Travel"]</a>
+								</li>
+								<li>
+									<a href="#">@Localizer["Life Style"]</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#"><h4 class="title">@Localizer["Low "]</h4></a>
+						<p>
+							@Localizer["LocalizerAcres "]
+						</p>
+						<h6 class="date">@Localizer["31st January,2018"]</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="img/b2.jpg" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">@Localizer["Travel"]</a>
+								</li>
+								<li>
+									<a href="#">@Localizer["Life Style"]</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#"><h4 class="title">@Localizer["Creative Outdoor Ads"]</h4></a>
+						<p>
+							@Localizer["Acres"]"
+						</p>
+						<h6 class="date">@Localizer["31st January,2018"]</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="img/b3.jpg" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">@Localizer["Travel"]</a>
+								</li>
+								<li>
+									<a href="#">@Localizer["Life Style"]</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#"><h4 class="title">@Localizer["It's Classified How To Utilize Free"]</h4></a>
+						<p>
+							@Localizer["Acres "]
+						</p>
+						<h6 class="date">@Localizer["31st January,2018"]</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="img/b1.jpg" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">@Localizer["Travel"]</a>
+								</li>
+								<li>
+									<a href="#">@Localizer["Life Style"]</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#"><h4 class="title">@Localizer["Low Cost Advertising"]</h4></a>
+						<p>
+							@Localizer["Acres "]
+						</p>
+						<h6 class="date">@Localizer["31st January,2018"]</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="img/b2.jpg" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">@Localizer["Travel"]</a>
+								</li>
+								<li>
+									<a href="#">@Localizer["Life Style"]</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#"><h4 class="title">@Localizer["Creative Outdoor Ads"]</h4></a>
+						<p>
+							@Localizer["Acres "]
+						</p>
+						<h6 class="date">@Localizer["31st January,2018"]</h6>
+					</div>
+				</div>
+				<div class="single-recent-blog-post item">
+					<div class="thumb">
+						<img class="img-fluid" src="img/b3.jpg" alt="">
+					</div>
+					<div class="details">
+						<div class="tags">
+							<ul>
+								<li>
+									<a href="#">@Localizer["Travel"]</a>
+								</li>
+								<li>
+									<a href="#">@Localizer["Life Style"]</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#"><h4 class="title">@Localizer["It's Classified How To Utilize Free"]</h4></a>
+						<p>
+							@Localizer["Acres "]"
+						</p>
+						<h6 class="date">@Localizer["31st January,2018"]</h6>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End recent-blog Area -->
+<!-- start footer Area -->
+<footer class="footer-area section-gap">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-lg-3  col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>@Localizer["About Agency"]</h6>
+					<p>
+						@Localizer["The world"]
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>@Localizer["Navigation Links"]</h6>
+					<div class="row">
+						<div class="col">
+							<ul>
+								<li><a href="#">@Localizer["Home"]</a></li>
+								<li><a href="#">@Localizer["Feature"]</a></li>
+								<li><a href="#">@Localizer["Services"]</a></li>
+								<li><a href="#">@Localizer["Portfolio"]</a></li>
+							</ul>
+						</div>
+						<div class="col">
+							<ul>
+								<li><a href="#">@Localizer["Team"]</a></li>
+								<li><a href="#">@Localizer["Pricing"]</a></li>
+								<li><a href="#">@Localizer["Blog"]</a></li>
+								<li><a href="#">@Localizer["Contact"]</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3  col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>@Localizer["Newsletter"]</h6>
+					<p>
+						@Localizer["For business"]
+					</p>
+					<div id="mc_embed_signup">
+						<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
+							<div class="input-group d-flex flex-row">
+								<input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+								<button class="btn bb-btn"><span class="lnr lnr-location"></span></button>
+							</div>
+							<div class="mt-10 info"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3  col-md-6 col-sm-6">
+				<div class="single-footer-widget mail-chimp">
+					<h6 class="mb-20">InstaFeed</h6>
+					<ul class="instafeed d-flex flex-wrap">
+						<li><img src="img/i1.jpg" alt=""></li>
+						<li><img src="img/i2.jpg" alt=""></li>
+						<li><img src="img/i3.jpg" alt=""></li>
+						<li><img src="img/i4.jpg" alt=""></li>
+						<li><img src="img/i5.jpg" alt=""></li>
+						<li><img src="img/i6.jpg" alt=""></li>
+						<li><img src="img/i7.jpg" alt=""></li>
+						<li><img src="img/i8.jpg" alt=""></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row footer-bottom d-flex justify-content-between align-items-center">
+			<p class="col-lg-8 col-sm-12 footer-text m-0">
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</p>
+			<div class="col-lg-4 col-sm-12 footer-social">
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-dribbble"></i></a>
+				<a href="#"><i class="fa fa-behance"></i></a>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- End footer Area -->
+@section Scripts {
+	<script>
+		$(".date-picker").datepicker();
+	</script>
+
+<script src="js/vendor/jquery-2.2.4.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/easing.min.js"></script>
+<script src="js/hoverIntent.js"></script>
+<script src="js/superfish.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/main.js"></script>	
+}
