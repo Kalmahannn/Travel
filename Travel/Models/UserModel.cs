@@ -2,6 +2,7 @@
 
 public class UserModel
 {
+    [Key]
     [Required(ErrorMessage = "Логин қажет")]
     public string Username { get; set; }
 

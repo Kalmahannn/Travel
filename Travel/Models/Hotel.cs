@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ImageUrl { get; set; }
+		public byte[]? ImageData { get; set; }
         public string Location { get; set; }
         public decimal PricePerNight { get; set; }
         public int Stars { get; set; }

@@ -10,6 +10,8 @@ namespace TravelistaMVC.Data
         {
         }
 
-        public DbSet<Hotel> Hotels { get; set; }
-    }
+		public DbSet<Hotel> Hotels { get; set; }
+		public DbSet<HotelBooking> HotelBookings { get; set; }
+        public DbSet<TourPackage> TourPackages { get; set; }
+	}
 }

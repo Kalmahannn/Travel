@@ -1,7 +1,7 @@
-﻿namespace TravelistaMVC.Models
+﻿namespace Travel.Api.Models
 {
-    public class HotelBooking
-    {
+	public class HotelBooking
+	{
 		public int Id { get; set; }
 
 		public int HotelId { get; set; }

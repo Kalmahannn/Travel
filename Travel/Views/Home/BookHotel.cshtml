@@ -73,15 +73,15 @@
 
     <form asp-action="BookHotel" method="post" class="w-50 mx-auto modern-form">
         <div class="form-group">
-            @Html.LabelFor(m => m.Name)
-            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter your name" })
-            @Html.ValidationMessageFor(m => m.Name)
+            @Html.LabelFor(m => m.User.Username)
+            @Html.TextBoxFor(m => m.User.Username, new { @class = "form-control", placeholder = "Enter your name" })
+            @Html.ValidationMessageFor(m => m.User.Username)
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(m => m.Email)
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@mail.com", type = "email" })
-            @Html.ValidationMessageFor(m => m.Email)
+            @Html.LabelFor(m => m.User.Username)
+            @Html.TextBoxFor(m => m.User.Username, new { @class = "form-control", placeholder = "example@mail.com", type = "email" })
+            @Html.ValidationMessageFor(m => m.User.Username)
         </div>
 
         <div class="form-group">

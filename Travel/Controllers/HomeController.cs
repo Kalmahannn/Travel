@@ -94,109 +94,71 @@ namespace TravelistaMVC.Controllers
             return View(packages);
         }
 
-        public IActionResult Hotels()
+
+
+
+		public IActionResult GetImage(int id)
+		{
+			var hotel = _context.Hotels.Find(id);
+			if (hotel == null || hotel.ImageData == null)
+			{
+				return NotFound();
+			}
+
+			return File(hotel.ImageData, "image/jpeg"); // Можно также использовать другие форматы
+		}
+
+
+
+
+		public IActionResult Hotels()
         {
             _logger.LogInformation("Hotels беті ашылды.");
             var hotels1 = _context.Hotels.ToList();
-            var hotels = new List<Hotel>
-      
-            {
-                new Hotel
-                {
-                    Id = 1,
-                    Name = "Hilton Star Hotel",
-                    Location = "United States of America",
-                    PricePerNight = 250,
-                    ImageUrl = "/img/hotels/d1.jpg",
-                    Stars = 4,
-                    AirCondition = true,
-                    Restaurant = true,
-                    RoomService = false,
-                    Wifi = true,
-                    SwimmingPool = true,
-                    Gymnasium = false
-                },
-                new Hotel
-                {
-                    Id = 2,
-                    Name = "Mountain View Resort",
-                    Location = "Switzerland",
-                    PricePerNight = 300,
-                    ImageUrl = "/img/hotels/d2.jpg",
-                    Stars = 5,
-                    AirCondition = true,
-                    Restaurant = true,
-                    RoomService = true,
-                    Wifi = true,
-                    SwimmingPool = true,
-                    Gymnasium = true
-                },
-                new Hotel
-                {
-                    Id = 3,
-                    Name = "Desert Oasis Hotel",
-                    Location = "Morocco",
-                    PricePerNight = 220,
-                    ImageUrl = "/img/hotels/d3.jpg",
-                    Stars = 3,
-                    AirCondition = true,
-                    Restaurant = false,
-                    RoomService = true,
-                    Wifi = true,
-                    SwimmingPool = false,
-                    Gymnasium = false
-                },
-                new Hotel
-                {
-                    Id = 4,
-                    Name = "Island Paradise",
-                    Location = "Bahamas",
-                    PricePerNight = 400,
-                    ImageUrl = "/img/hotels/d4.jpg",
-                    Stars = 5,
-                    AirCondition = true,
-                    Restaurant = true,
-                    RoomService = true,
-                    Wifi = true,
-                    SwimmingPool = true,
-                    Gymnasium = true
-                },
-                new Hotel
-                {
-                    Id = 5,
-                    Name = "Urban Central Hotel",
-                    Location = "Tokyo, Japan",
-                    PricePerNight = 280,
-                    ImageUrl = "/img/hotels/d5.jpg",
-                    Stars = 4,
-                    AirCondition = true,
-                    Restaurant = true,
-                    RoomService = true,
-                    Wifi = true,
-                    SwimmingPool = false,
-                    Gymnasium = true
-                },
-                new Hotel
-                {
-                    Id = 6,
-                    Name = "Lakeview Retreat",
-                    Location = "Canada",
-                    PricePerNight = 260,
-                    ImageUrl = "/img/hotels/d6.jpg",
-                    Stars = 4,
-                    AirCondition = true,
-                    Restaurant = true,
-                    RoomService = true,
-                    Wifi = true,
-                    SwimmingPool = true,
-                    Gymnasium = false
-                }
-            };
 
-            return View(hotels);
+            return View(hotels1);
         }
 
-        public IActionResult Insurance()
+
+        public  IActionResult CreateHotel()
+        {
+            return View();
+        }
+
+
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> CreateHotel(Hotel hotel,IFormFile ImageFile)
+		{
+			if (ModelState.IsValid)
+			{
+
+				if (ImageFile != null && ImageFile.Length > 0)
+				{
+					
+					using (var memoryStream = new MemoryStream())
+					{
+						await ImageFile.CopyToAsync(memoryStream);
+                        hotel.ImageData = memoryStream.ToArray();
+					}
+				}
+
+
+				_context.Hotels.Add(hotel);
+				_context.SaveChanges();
+				return RedirectToAction("Hotels","Home"); 
+			}
+
+			return View(hotel); 
+		}
+
+
+
+
+
+
+		public IActionResult Insurance()
         {
             _logger.LogInformation("Insurance беті ашылды.");
             return View();
@@ -244,8 +206,8 @@ namespace TravelistaMVC.Controllers
                 var emailService = new EmailService();
                 var body = $@"
                 <h2>New Hotel Booking</h2>
-                <p><strong>Name:</strong> {model.Name}</p>
-                <p><strong>Email:</strong> {model.Email}</p>
+                <p><strong>Name:</strong> {model.User.Username}</p>
+                <p><strong>Email:</strong> {model.User.Username}</p>
                 <p><strong>Check-In:</strong> {model.CheckInDate.ToShortDateString()}</p>
                 <p><strong>Check-Out:</strong> {model.CheckOutDate.ToShortDateString()}</p>";
 
