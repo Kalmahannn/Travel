@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System.Text;
 using Travel.Api.Models;
 
@@ -21,6 +22,10 @@ string conn = builder.Configuration
 
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
 options.UseSqlServer(conn));
+
+
+
+#region JWt
 
 builder.Services.AddAuthentication(options =>
 {
@@ -47,8 +52,21 @@ builder.Services.AddAuthentication(options =>
 									.Configuration["Jwt:Key"]))
 	};
 });
+#endregion
 
 
+
+
+#region Log
+
+Log.Logger = new LoggerConfiguration()
+	.MinimumLevel.Information()
+	.WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+	.CreateLogger();
+
+builder.Host.UseSerilog();
+
+#endregion
 
 var app = builder.Build();
 

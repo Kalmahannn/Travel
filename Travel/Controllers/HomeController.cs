@@ -19,9 +19,12 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Numerics;
+using Travel.AppFilter;
 
 namespace TravelistaMVC.Controllers
 {
+
+
     [ServiceFilter(typeof(LoggingActionFilter))]
     [ServiceFilter(typeof(CustomAuthorizationFilter))]
     [ServiceFilter(typeof(CustomResultFilter))]
@@ -36,13 +39,15 @@ namespace TravelistaMVC.Controllers
             _logger = logger;
         }
 
+
         public IActionResult Index()
         {
             _logger.LogInformation("Index беті ашылды.");
             return View();
         }
 
-        public IActionResult About1()
+		[IEFilter]
+		public IActionResult About1()
         {
             _logger.LogInformation("About1 беті ашылды.");
             return View();
@@ -64,9 +69,28 @@ namespace TravelistaMVC.Controllers
 
 
 
-		public IActionResult GetImage(int id)
+		public async Task<IActionResult> GetImageAsync(int id)
 		{
-			var hotel = _context.Hotels.Find(id);
+			var hotel = new Hotel();
+
+
+			using (var client = new HttpClient())
+			{
+				var token = Request.Cookies["token"];
+
+				client.DefaultRequestHeaders.Authorization =
+					new AuthenticationHeaderValue("Bearer", token);
+
+				using (var responce = await client.GetAsync($"http://localhost:5101/api/Hotel/GetById/{id}"))
+				{
+					var result = await responce.Content.ReadAsStringAsync();
+					hotel = JsonConvert.DeserializeObject<Hotel>(result);
+				}
+
+			}
+
+
+
 			if (hotel == null || hotel.ImageData == null)
 			{
 				return NotFound();
@@ -146,7 +170,24 @@ namespace TravelistaMVC.Controllers
 		public async Task<IActionResult> BookHotel(int hotelId)
 		{
 			_logger.LogInformation("BookHotel GET беті ашылды.");
-			var _hotel = await _context.Hotels.FindAsync(hotelId);
+			var _hotel = new Hotel();
+			
+
+			using (var client = new HttpClient())
+			{
+				var token = Request.Cookies["token"];
+
+				client.DefaultRequestHeaders.Authorization =
+					new AuthenticationHeaderValue("Bearer", token);
+
+				using (var responce = await client.GetAsync($"http://localhost:5101/api/Hotel/GetById/{hotelId}"))
+				{
+					var result = await responce.Content.ReadAsStringAsync();
+					_hotel = JsonConvert.DeserializeObject<Hotel>(result);
+				}
+
+			}
+
 			var model = new HotelBooking { HotelId = hotelId };
 
 

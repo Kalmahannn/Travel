@@ -1,0 +1,29 @@
+﻿@model IEnumerable<dynamic> 
+
+
+
+
+
+
+<div style="margin-top:150px">
+<table  class="table">
+    <h2>Мои брони</h2>
+    <thead>
+        <tr>
+            <th>Отель</th>
+            <th>Дата заезда</th>
+            <th>Дата выезда</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.HotelName</td>
+                <td>@booking.CheckInDate.ToShortDateString()</td>
+                <td>@booking.CheckOutDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

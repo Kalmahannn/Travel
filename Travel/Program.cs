@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using Serilog; // Егер Serilog та қосулы болса
+using Serilog; 
 using TravelistaMVC.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Travel.Data;
 using Travel.Models;
+using Travel.AppFilter;
+using Travel.AppMiddleWare;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 	.AddDefaultTokenProviders();
 
 #endregion
+
+
+
 
 
 
@@ -59,6 +64,11 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
+
+
+
+
+
 builder.Services.AddAuthentication("MyCookieAuth")
     .AddCookie("MyCookieAuth", options =>
     {
@@ -72,6 +82,10 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<TokenService>();
 
 
+//builder.Services.AddControllers(options =>
+//{
+//	options.Filters.Add<IEFilter>();
+//});
 
 
 var app = builder.Build();
@@ -97,6 +111,12 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+
+
+//IEMiddleWare
+//app.UseMiddleware<IEMiddleWare>();
+
 
 app.UseMiddleware<TravelistaMVC.Middlewares.ResponseTimeMiddleware>(); //Response Time Middleware 
 app.UseMiddleware<TravelistaMVC.Middlewares.RequestLoggingMiddleware>(); // RequestLoggingMiddleware (біздің Middleware)

@@ -57,6 +57,68 @@ namespace Travel.admin.Controllers
 
 
 
+		[HttpGet]
+		public async Task<IActionResult> EditHotel(int id)
+		{
+			var hotel = await _context.Hotels.FindAsync(id);
+			if (hotel == null)
+				return NotFound();
+
+			return View(hotel);
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> EditHotel(int id, Hotel updatedHotel, IFormFile? ImageFile)
+		{
+			var hotel = await _context.Hotels.FindAsync(id);
+			if (hotel == null)
+				return NotFound();
+
+			hotel.Name = updatedHotel.Name;
+			hotel.Location = updatedHotel.Location;
+			hotel.PricePerNight = updatedHotel.PricePerNight;
+			hotel.Stars = updatedHotel.Stars;
+			hotel.SwimmingPool = updatedHotel.SwimmingPool;
+			hotel.Gymnasium = updatedHotel.Gymnasium;
+			hotel.Wifi = updatedHotel.Wifi;
+			hotel.RoomService = updatedHotel.RoomService;
+			hotel.AirCondition = updatedHotel.AirCondition;
+			hotel.Restaurant = updatedHotel.Restaurant;
+
+			if (ImageFile != null && ImageFile.Length > 0)
+			{
+				using (var ms = new MemoryStream())
+				{
+					await ImageFile.CopyToAsync(ms);
+					hotel.ImageData = ms.ToArray();
+				}
+			}
+
+			await _context.SaveChangesAsync();
+			return RedirectToAction("Index","Home"); 
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> DeleteHotel(int id)
+		{
+			var hotel = await _context.Hotels.FindAsync(id);
+			if (hotel == null)
+				return NotFound();
+
+			_context.Hotels.Remove(hotel);
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction("Index","Home"); 
+		}
+
+
+
+
+
+
+
 
 		public IActionResult Privacy()
 		{

@@ -70,7 +70,7 @@
                             </ul>
                         </li>
                         <li>@Html.ActionLink(Localizer["Contact"].Value, "Contact", "Home")</li>
-                        <li><a asp-action="BookHotel" asp-controller="Home">@Localizer["Book Hotel"].Value</a></li>
+                        <li><a asp-action="MyBrons" asp-controller="Booking">@Localizer["My Books"].Value</a></li>
 
                         @if (User.Identity.IsAuthenticated)
                         {

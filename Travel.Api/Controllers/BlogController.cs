@@ -40,7 +40,30 @@ namespace Travel.Api.Controllers
 			return Ok(posts);
 		}
 
+		[HttpGet("GetBlog{id:int}")]
+		public async Task<IActionResult> GetBlogPostById(int id)
+		{
+			var post = await _context.BlogPosts
+				.Include(p => p.Category)
+				.Where(p => p.Id == id)
+				.Select(p => new
+				{
+					p.Id,
+					p.Title,
+					p.Description,
+					p.Content,
+					p.Author,
+					p.PublishedDate,
+					Category = p.Category == null ? p.Category.Name : null
+					
+				})
+				.FirstOrDefaultAsync();
 
+			if (post == null)
+				return NotFound();
+
+			return Ok(post);
+		}
 
 
 	}

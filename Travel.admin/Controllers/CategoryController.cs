@@ -20,6 +20,7 @@ namespace Travel.admin.Controllers
 		}
 
 		
+		
 		public IActionResult Create()
 		{
 			return View();

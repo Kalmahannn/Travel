@@ -10,10 +10,12 @@ namespace Travel.Api.Controllers
 	public class CategoryController : ControllerBase
 	{
 		private readonly AppIdentityDbContext _db;
+		private readonly ILogger<CategoryController> _logger;
 
-		public CategoryController(AppIdentityDbContext db)
+		public CategoryController(AppIdentityDbContext db, ILogger<CategoryController> logger)
 		{
 			_db = db;
+			_logger = logger;
 		}
 
 		[HttpGet]

@@ -1,19 +1,57 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using Travel.Data;
 
-[Authorize(AuthenticationSchemes = "MyCookieAuth")]
+
 public class BookingController : Controller
 {
     private readonly ILogger<BookingController> _logger;
+    private readonly AppIdentityDbContext _context;
+    private readonly UserManager<AppUser> _userManager;
 
-    public BookingController(ILogger<BookingController> logger)
-    {
-        _logger = logger;
-    }
 
-    public IActionResult Index()
+	public BookingController(ILogger<BookingController> logger,AppIdentityDbContext context, UserManager<AppUser> userManager)
+	{
+		_logger = logger;
+		_context = context;
+		_userManager = userManager;
+	}
+
+
+
+
+	public IActionResult MyBrons()
+	{
+		var userId = _userManager.GetUserId(User);
+
+		var bookings = _context.HotelBookings
+			.Include(b => b.Hotel)
+			.Where(b => b.UserId == userId)
+			.Select(b => new
+			{
+				b.Id,
+				HotelName = b.Hotel.Name,
+				b.CheckInDate,
+				b.CheckOutDate
+			})
+			.ToList();
+
+		return View(bookings);
+	}
+
+
+
+
+
+
+
+
+
+	public IActionResult Index()
     {
         _logger.LogInformation("Қолданушы {User} бронирование бетіне кірді.", User.Identity?.Name ?? "Анықталмаған");
         return View();
