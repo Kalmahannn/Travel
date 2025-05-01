@@ -19,7 +19,7 @@ string conn = builder.Configuration
 					 .GetConnectionString("DefaultConnection");
 
 
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<AppIdentityDbContext>(options =>
 options.UseSqlServer(conn));
 
 builder.Services.AddAuthentication(options =>

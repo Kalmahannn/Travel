@@ -1,55 +1,101 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using Travel.Data;
+using Travel.Models;
 
 public class AccountController : Controller
 {
-    [HttpGet]
+
+	private TokenService _tokenService;
+	private UserManager<AppUser> _accountManager;
+	private SignInManager<AppUser> _singInManager;
+	private readonly UserManager<AppUser> _userManager;
+
+
+    public AccountController(UserManager<AppUser> accountManager, SignInManager<AppUser> singInManager, UserManager<AppUser> userManager, TokenService tokenService)
+	{
+		_accountManager = accountManager;
+		_singInManager = singInManager;
+		_userManager = userManager;
+		_tokenService = tokenService;
+	}
+
+	[HttpGet]
     public IActionResult Register() => View();
 
-    [HttpPost]
-    public IActionResult Register(UserModel model)
-    {
-        var exists = UserStore.Users.FirstOrDefault(u => u.Username == model.Username);
-        if (exists != null)
-        {
-            ViewBag.Error = "❌ Бұл логин бұрыннан бар.";
-            return View(model);
-        }
 
-        UserStore.Users.Add(model);
-        TempData["Success"] = "✅ Тіркелу сәтті өтті!";
-        return RedirectToAction("Login");
+
+
+
+
+
+
+    [HttpPost]
+    public async Task<IActionResult> RegisterAsync(UserModel model)
+    {
+
+		if (ModelState.IsValid)
+		{
+
+			var user = new AppUser { UserName = model.Username, Email = model.Email };
+			var result = await _accountManager.CreateAsync(user, model.Password);
+
+			if (result.Succeeded)
+			{
+				
+				await _singInManager.SignInAsync(user, isPersistent: false);
+				return RedirectToAction("Index", "Home");
+			}
+
+			foreach (var error in result.Errors)
+			{
+				ModelState.AddModelError("", error.Description);
+			}
+		}
+
+
+		TempData["Success"] = "✅ Тіркелу сәтті өтті!";
+        return View(model);
     }
 
     [HttpGet]
     public IActionResult Login() => View();
 
+
+
+
+
+
+
+
     [HttpPost]
     public async Task<IActionResult> Login(UserModel model)
     {
-        var user = UserStore.Users.FirstOrDefault(u =>
-            u.Username == model.Username && u.Password == model.Password);
+		AppUser appUser = await _accountManager.FindByEmailAsync(model.Email);
+		if (appUser != null)
+		{
+			var result = await _singInManager.PasswordSignInAsync(appUser, model.Password, false, false);
+			if (result.Succeeded)
+			{
+				var token = await _tokenService.GenerateAccessToken(appUser);
+				Response.Cookies.Append("token", token);
+				
+				return RedirectToAction("Index", "Home");
+			}
+		}
 
-        if (user != null)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Username)
-            };
 
-            var identity = new ClaimsIdentity(claims, "MyCookieAuth");
-            var principal = new ClaimsPrincipal(identity);
-
-            await HttpContext.SignInAsync("MyCookieAuth", principal);
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        ViewBag.Error = "❌ Қате логин немесе құпия сөз!";
+		ViewBag.Error = "❌ Қате логин немесе құпия сөз!";
         return View(model);
     }
+
+
+
+
+
 
     public async Task<IActionResult> Logout()
     {

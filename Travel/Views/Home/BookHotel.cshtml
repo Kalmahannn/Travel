@@ -1,5 +1,7 @@
-﻿@* 1.3.1 Передача из представлений в контроллеры*@
-@model TravelistaMVC.Models.HotelBooking
+﻿@using TravelistaMVC.Models
+@* 1.3.1 Передача из представлений в контроллеры*@
+
+@model HotelBooking
 
 @{
     ViewData["Title"] = "Book a Hotel";
@@ -71,18 +73,9 @@
 <div class="container">
     <h2 class="text-center">Hotel Booking Form</h2>
 
-    <form asp-action="BookHotel" method="post" class="w-50 mx-auto modern-form">
-        <div class="form-group">
-            @Html.LabelFor(m => m.User.Username)
-            @Html.TextBoxFor(m => m.User.Username, new { @class = "form-control", placeholder = "Enter your name" })
-            @Html.ValidationMessageFor(m => m.User.Username)
-        </div>
+    <form asp-action="BookHotel" asp-controller="Home" method="post" class="w-50 mx-auto modern-form">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.User.Username)
-            @Html.TextBoxFor(m => m.User.Username, new { @class = "form-control", placeholder = "example@mail.com", type = "email" })
-            @Html.ValidationMessageFor(m => m.User.Username)
-        </div>
+        @Html.HiddenFor(m => m.HotelId)
 
         <div class="form-group">
             @Html.LabelFor(m => m.CheckInDate)
@@ -93,6 +86,8 @@
             @Html.LabelFor(m => m.CheckOutDate)
             @Html.TextBoxFor(m => m.CheckOutDate, new { @class = "form-control", type = "date" })
         </div>
+
+
 
         <button type="submit" class="btn btn-success w-100">Book Now</button>
     </form>

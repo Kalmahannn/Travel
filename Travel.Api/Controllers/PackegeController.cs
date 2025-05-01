@@ -6,19 +6,21 @@ namespace Travel.Api.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class HotelController : ControllerBase
+	public class PackageController : ControllerBase
 	{
 		private readonly AppIdentityDbContext _db;
 
-		public HotelController(AppIdentityDbContext db) {
-			_db = db; 
+		public PackageController(AppIdentityDbContext db)
+		{
+			_db = db;
 		}
 
 		[HttpGet]
-		public List<Hotel> GetHotel()
+		[Route("package")]
+		public ActionResult<TourPackage> Package()
 		{
-			;
-			return _db.Hotels.ToList();
+			var packages = _db.TourPackages.ToList();
+			return Ok(packages);
 		}
 	}
 }

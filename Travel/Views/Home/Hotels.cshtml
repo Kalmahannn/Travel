@@ -76,14 +76,15 @@
 								</div>
 							</h4>
 							<p>@hotel.Location</p>
-							<ul class="package-list">
-								<li><span>Swimming Pool</span><span>@(hotel.SwimmingPool ? "Yes" : "No")</span></li>
-								<li><span>Gymnasium</span><span>@(hotel.Gymnasium ? "Yes" : "No")</span></li>
-								<li><span>Wi-Fi</span><span>@(hotel.Wifi ? "Yes" : "No")</span></li>
-								<li><span>Room Service</span><span>@(hotel.RoomService ? "Yes" : "No")</span></li>
-								<li><span>Air Condition</span><span>@(hotel.AirCondition ? "Yes" : "No")</span></li>
-								<li><span>Restaurant</span><span>@(hotel.Restaurant ? "Yes" : "No")</span></li>
-								<li><span>Price per night</span><a href="#" class="price-btn">$@hotel.PricePerNight</a></li>
+							<ul  class="package-list">
+								<li><span>Swimming Pool</span><span style="padding-left:20px">@(hotel.SwimmingPool ? "Yes" : "No")</span></li>
+								<li><span>Gymnasium</span><span style="padding-left:20px">@(hotel.Gymnasium ? "Yes" : "No")</span></li>
+								<li><span>Wi-Fi</span><span style="padding-left:20px">@(hotel.Wifi ? "Yes" : "No")</span></li>
+								<li><span>Room Service</span><span style="padding-left:20px">@(hotel.RoomService ? "Yes" : "No")</span></li>
+								<li><span>Air Condition</span><span style="padding-left:20px">@(hotel.AirCondition ? "Yes" : "No")</span></li>
+								<li><span>Restaurant</span><span style="padding-left:20px">@(hotel.Restaurant ? "Yes" : "No")</span></li>
+								<li><span>Price per night</span><a style="margin-left:20px" href="#" class="price-btn">$@hotel.PricePerNight</a></li>
+								<a style="background:#f8e700" href="@Url.Action("BookHotel","Home",new {hotelId = hotel.Id})" class="price-btn">Бронировать</a>
 							</ul>
 						</div>
 					</div>

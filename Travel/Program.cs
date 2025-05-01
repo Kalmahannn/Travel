@@ -2,15 +2,45 @@
 using System.Globalization;
 using Serilog; // Егер Serilog та қосулы болса
 using TravelistaMVC.Filters;
-using TravelistaMVC.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Travel.Data;
+using Travel.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+#region DbContext
+
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+#endregion
+
+#region IdentityDbContext
+builder.Services.AddDbContext<AppIdentityDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+	.AddEntityFrameworkStores<AppIdentityDbContext>()
+	.AddRoles<IdentityRole>()
+	.AddDefaultTokenProviders();
+
+#endregion
+
+
+
 // Localization сервистер
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+
+
+
+
+
+
 
 builder.Services.AddControllersWithViews()
     .AddViewLocalization()
@@ -35,7 +65,14 @@ builder.Services.AddAuthentication("MyCookieAuth")
         options.LoginPath = "/Account/Login";
         options.AccessDeniedPath = "/Account/AccessDenied";
     });
+
 builder.Services.AddAuthorization();
+
+
+builder.Services.AddScoped<TokenService>();
+
+
+
 
 var app = builder.Build();
 

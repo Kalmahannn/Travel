@@ -1,17 +1,21 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging; // Логгерді қосу
+using Microsoft.Extensions.Logging; 
 using TravelistaMVC.Models;
 using TravelistaMVC.Services;
 using TravelistaMVC.ViewModels;
-using TravelistaMVC.Filters; // Фильтрдің жолын қосу
+using TravelistaMVC.Filters; 
 
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TravelistaMVC.Data;
+
 using TravelistaMVC.Filters;
 using System.Linq;
+using System.Security.Claims;
+using Travel.Models;
+using Travel.Data;
+using System.Threading.Tasks;
 
 namespace TravelistaMVC.Controllers
 {
@@ -20,10 +24,10 @@ namespace TravelistaMVC.Controllers
     [ServiceFilter(typeof(CustomResultFilter))]
     public class HomeController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly AppIdentityDbContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(AppDbContext context, ILogger<HomeController> logger)
+        public HomeController(AppIdentityDbContext context, ILogger<HomeController> logger)
         {
             _context = context;
             _logger = logger;
@@ -41,55 +45,15 @@ namespace TravelistaMVC.Controllers
             return View();
         }
 
-        public IActionResult Packages()
+
+
+        //Пакеты
+        public async Task<IActionResult> Packages()
         {
             _logger.LogInformation("Packages беті ашылды.");
 
-            var packages = new List<TourPackage>
-            {
-                new TourPackage {
-                    Id = 2,
-                    Name = "Holiday Sea Beach",
-                    Destination = "Maldives",
-                    Price = 350,
-                    ImageUrl = "/img/packages/d1.jpg"
-                },
-                new TourPackage {
-                    Id = 3,
-                    Name = "Mountain Adventure",
-                    Destination = "Switzerland",
-                    Price = 400,
-                    ImageUrl = "/img/packages/d2.jpg"
-                },
-                new TourPackage {
-                    Id = 4,
-                    Name = "Safari Expedition",
-                    Destination = "Kenya",
-                    Price = 450,
-                    ImageUrl = "/img/packages/d3.jpg"
-                },
-                new TourPackage {
-                    Id = 5,
-                    Name = "Cultural Tour",
-                    Destination = "Japan",
-                    Price = 300,
-                    ImageUrl = "/img/packages/d4.jpg"
-                },
-                new TourPackage {
-                    Id = 6,
-                    Name = "Island Getaway",
-                    Destination = "Bahamas",
-                    Price = 500,
-                    ImageUrl = "/img/packages/d5.jpg"
-                },
-                new TourPackage {
-                    Id = 7,
-                    Name = "Historical Europe",
-                    Destination = "Rome, Italy",
-                    Price = 380,
-                    ImageUrl = "/img/packages/d6.jpg"
-                },
-            };
+            var packages = _context.TourPackages.ToList();
+
 
             return View(packages);
         }
@@ -110,7 +74,7 @@ namespace TravelistaMVC.Controllers
 
 
 
-
+        //Отели
 		public IActionResult Hotels()
         {
             _logger.LogInformation("Hotels беті ашылды.");
@@ -118,6 +82,8 @@ namespace TravelistaMVC.Controllers
 
             return View(hotels1);
         }
+
+
 
 
         public  IActionResult CreateHotel()
@@ -156,6 +122,67 @@ namespace TravelistaMVC.Controllers
 
 
 
+		[HttpGet]
+		public async Task<IActionResult> BookHotel(int hotelId)
+		{
+			_logger.LogInformation("BookHotel GET беті ашылды.");
+			var _hotel = await _context.Hotels.FindAsync(hotelId);
+			var model = new HotelBooking { HotelId = hotelId };
+
+
+
+			return View(model);
+		}
+
+
+
+		[HttpPost]
+		public async Task<IActionResult> BookHotel(HotelBooking model)
+		{
+			if (ModelState.IsValid)
+			{
+
+				if (!ModelState.IsValid)
+					return View(model);
+
+				var hotel = await _context.Hotels.FindAsync(model.HotelId);
+				if (hotel == null)
+				{
+					ModelState.AddModelError("", "Отель не найден.");
+					return View(model);
+				}
+
+
+				var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+				if (string.IsNullOrEmpty(userId))
+				{
+					ModelState.AddModelError("", "Пользователь не авторизован.");
+					return View(model);
+				}
+
+				model.UserId = userId;
+
+				_context.HotelBookings.Add(model);
+				await _context.SaveChangesAsync();
+
+				return RedirectToAction("BookingConfirmation");
+
+			}
+
+			_logger.LogWarning("BookHotel POST: ModelState жарамсыз.");
+			return View(model);
+		}
+
+
+
+
+
+
+
+
+
+
 
 
 		public IActionResult Insurance()
@@ -176,12 +203,7 @@ namespace TravelistaMVC.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult BookHotel()
-        {
-            _logger.LogInformation("BookHotel GET беті ашылды.");
-            return View();
-        }
+        
 
         [HttpPost]
         public IActionResult SetLanguage(string culture)// тіл ауыстыру
@@ -196,29 +218,6 @@ namespace TravelistaMVC.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> BookHotel(HotelBooking model)
-        {
-            if (ModelState.IsValid)
-            {
-                _logger.LogInformation("BookHotel POST: жаңа брондау жасалды.");
-
-                var emailService = new EmailService();
-                var body = $@"
-                <h2>New Hotel Booking</h2>
-                <p><strong>Name:</strong> {model.User.Username}</p>
-                <p><strong>Email:</strong> {model.User.Username}</p>
-                <p><strong>Check-In:</strong> {model.CheckInDate.ToShortDateString()}</p>
-                <p><strong>Check-Out:</strong> {model.CheckOutDate.ToShortDateString()}</p>";
-
-                await emailService.SendBookingEmail("kalmahanesjan@gmail.com", "New Hotel Booking", body);
-
-                TempData["Message"] = "Брондау сәтті өтті!";
-                return RedirectToAction("BookHotel");
-            }
-
-            _logger.LogWarning("BookHotel POST: ModelState жарамсыз.");
-            return View(model);
-        }
+       
     }
 }

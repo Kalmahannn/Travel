@@ -6,7 +6,10 @@ public class UserModel
     [Required(ErrorMessage = "Логин қажет")]
     public string Username { get; set; }
 
-    [Required(ErrorMessage = "Құпия сөз қажет")]
+	[Required(ErrorMessage = "Email қажет")]
+	public string Email { get; set; }
+
+	[Required(ErrorMessage = "Құпия сөз қажет")]
     [DataType(DataType.Password)]
     public string Password { get; set; }
 

@@ -80,6 +80,12 @@
                 </div>
 
                 <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Логин</label>
+                    <input asp-for="Email" class="form-control" placeholder="Email таңдаңыз" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
                     <label asp-for="Password" class="form-label">Құпия сөз</label>
                     <input asp-for="Password" class="form-control" type="password" placeholder="Құпия сөз енгізіңіз" />
                     <span asp-validation-for="Password" class="text-danger"></span>
