@@ -100,7 +100,7 @@ namespace Travel.admin.Controllers
 		}
 
 
-		[HttpPost]
+		[HttpGet]
 		public async Task<IActionResult> DeleteHotel(int id)
 		{
 			var hotel = await _context.Hotels.FindAsync(id);

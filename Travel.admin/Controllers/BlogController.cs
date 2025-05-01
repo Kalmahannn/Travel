@@ -56,5 +56,62 @@ namespace Travel.admin.Controllers
 			return View(blog);
 		}
 
+
+
+
+
+
+
+		[HttpGet]
+		public async Task<IActionResult> EditBlog(int id)
+		{
+			var post = await _context.BlogPosts.FindAsync(id);
+			if (post == null)
+				return NotFound();
+
+			ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", post.CategoryId);
+			return View(post); 
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> EditBlog(int id, BlogPost updatedPost, IFormFile? ImageFile)
+		{
+			var post = await _context.BlogPosts.FindAsync(id);
+			if (post == null)
+				return NotFound();
+
+			post.Title = updatedPost.Title;
+			post.Content = updatedPost.Content;
+			post.CategoryId = updatedPost.CategoryId;
+
+			if (ImageFile != null && ImageFile.Length > 0)
+			{
+				using var ms = new MemoryStream();
+				await ImageFile.CopyToAsync(ms);
+				post.ImageData = ms.ToArray();
+			}
+
+			await _context.SaveChangesAsync();
+			return RedirectToAction("Blog","Blog");
+		}
+
+
+		[HttpGet]
+		public async Task<IActionResult> DeleteBlog(int id)
+		{
+			var post = await _context.BlogPosts.FindAsync(id);
+			if (post == null)
+				return NotFound();
+
+			_context.BlogPosts.Remove(post);
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction("Blog","Blog");
+		}
+
+
+
+
 	}
 }

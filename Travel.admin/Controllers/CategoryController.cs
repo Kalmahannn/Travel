@@ -41,6 +41,46 @@ namespace Travel.admin.Controllers
 
 
 
+		[HttpGet]
+		public async Task<IActionResult> EditCategory(int id)
+		{
+			var category = await _context.Categories.FindAsync(id);
+			if (category == null)
+				return NotFound();
+
+			return View(category); 
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> EditCategory(int id, Category updatedCategory)
+		{
+			var category = await _context.Categories.FindAsync(id);
+			if (category == null)
+				return NotFound();
+
+			category.Name = updatedCategory.Name;
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction("category","Category"); 
+		}
+
+
+
+		[HttpGet]
+		public async Task<IActionResult> DeleteCategory(int id)
+		{
+			var category = await _context.Categories.FindAsync(id);
+			if (category == null)
+				return NotFound();
+
+			_context.Categories.Remove(category);
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction("category","Category");
+		}
+
+
 
 
 

@@ -23,10 +23,10 @@
                 <td>@item.Title</td>
                 <td>@item?.Category?.Name</td>
                 <td>
-                    <a href="@Url.Action("EditPosition", "Home", new{id=item.Id})">edit</a>
+                    <a href="@Url.Action("EditBlog", "Blog", new{id=item.Id})">edit</a>
                 </td>
                 <td>
-                    <a href="@Url.Action("DeletePosition", "Home", new{id=item.Id})">delete</a>
+                    <a href="@Url.Action("DeleteBlog", "Blog", new{id=item.Id})">delete</a>
                 </td>
             </tr>
         }
