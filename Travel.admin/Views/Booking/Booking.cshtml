@@ -1,0 +1,38 @@
+﻿@model List<HotelBooking>
+
+@{
+    ViewData["Title"] = "Справочник Hotel";
+    ViewData["Description"] = "список Hotel";
+}
+<table class="table table-striped table-bordered table-advance table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Hotel</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (HotelBooking item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.User.UserName</td>
+                <td>@item.Hotel.Name</td>
+                <td>@item.CheckInDate</td>
+                <td>
+                    <a href="@Url.Action("EditPosition", "Home", new{id=item.Id})">edit</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("DeletePosition", "Home", new{id=item.Id})">delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<a href="@Url.Action("Create", "Booking")" class="btn btn-default">Add Hotel</a>

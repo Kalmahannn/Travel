@@ -1,0 +1,79 @@
+﻿@model Hotel
+
+@{
+    ViewData["Title"] = "Добавить новый отель";
+}
+
+
+
+
+
+<form style="margin-top:50px" asp-action="CreateHotel" method="post" enctype="multipart/form-data">
+    <h2>@ViewData["Title"]</h2>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageData" class="control-label">Изображение</label>
+        <input type="file" name="ImageFile" class="form-control" />
+        <span asp-validation-for="ImageData" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Location" class="control-label"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PricePerNight" class="control-label"></label>
+        <input asp-for="PricePerNight" class="form-control" />
+        <span asp-validation-for="PricePerNight" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Stars" class="control-label"></label>
+        <input asp-for="Stars" class="form-control" />
+        <span asp-validation-for="Stars" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SwimmingPool" class="control-label"></label>
+        <input asp-for="SwimmingPool" type="checkbox" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Gymnasium" class="control-label"></label>
+        <input asp-for="Gymnasium" type="checkbox" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Wifi" class="control-label"></label>
+        <input asp-for="Wifi" type="checkbox" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RoomService" class="control-label"></label>
+        <input asp-for="RoomService" type="checkbox" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AirCondition" class="control-label"></label>
+        <input asp-for="AirCondition" type="checkbox" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Restaurant" class="control-label"></label>
+        <input asp-for="Restaurant" type="checkbox" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

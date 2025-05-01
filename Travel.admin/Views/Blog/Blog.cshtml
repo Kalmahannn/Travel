@@ -1,0 +1,37 @@
+﻿
+@model List<BlogPost>
+
+@{
+    ViewData["Title"] = "Справочник Hotel";
+    ViewData["Description"] = "список Hotel";
+}
+<table class="table table-striped table-bordered table-advance table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (BlogPost item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@item?.Category?.Name</td>
+                <td>
+                    <a href="@Url.Action("EditPosition", "Home", new{id=item.Id})">edit</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("DeletePosition", "Home", new{id=item.Id})">delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<a href="@Url.Action("Create", "Blog")" class="btn btn-default">Add Hotel</a>

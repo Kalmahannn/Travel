@@ -16,6 +16,9 @@ using System.Security.Claims;
 using Travel.Models;
 using Travel.Data;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Numerics;
 
 namespace TravelistaMVC.Controllers
 {
@@ -75,12 +78,29 @@ namespace TravelistaMVC.Controllers
 
 
         //Отели
-		public IActionResult Hotels()
+		public async Task<IActionResult> HotelsAsync()
         {
             _logger.LogInformation("Hotels беті ашылды.");
-            var hotels1 = _context.Hotels.ToList();
+            var hotels = new List<Hotel>();
 
-            return View(hotels1);
+
+			using (var client = new HttpClient())
+			{
+				var token = Request.Cookies["token"];
+
+				client.DefaultRequestHeaders.Authorization =
+					new AuthenticationHeaderValue("Bearer", token);
+
+				using (var responce = await client.GetAsync("http://localhost:5101/api/Hotel"))
+				{
+					var result = await responce.Content.ReadAsStringAsync();
+					hotels = JsonConvert.DeserializeObject<List<Hotel>>(result);
+				}
+
+			}
+
+
+			return View(hotels);
         }
 
 

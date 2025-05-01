@@ -1,4 +1,6 @@
-﻿namespace Travel.Controllers
+﻿using Travel.Models;
+
+namespace Travel.Controllers
 {
     public class BlogPost
     {
@@ -8,7 +10,9 @@
         public string Content { get; set; }
         public string Author { get; set; }
         public DateTime PublishedDate { get; set; }
-        public string Category { get; set; }
-        public string ImageUrl { get; set; }
-    }
+        public Byte[]? ImageData { get; set; }
+
+		public int CategoryId { get; set; }
+		public Category? Category { get; set; }
+	}
 }
