@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Travel.Data;
 using Travel.Models;
-using Travel.AppFilter;
-using Travel.AppMiddleWare;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Travel.Data;
 
@@ -11,9 +12,11 @@ using Travel.Data;
 namespace Travel.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    partial class AppIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250503140029_PackageMigrate")]
+    partial class PackageMigrate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -371,6 +374,7 @@ namespace Travel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("ImageData")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")

@@ -66,6 +66,19 @@ namespace TravelistaMVC.Controllers
             return View(packages);
         }
 
+		public async Task<IActionResult> GetImagePackage(int id)
+		{
+			TourPackage package = await _context.TourPackages.FindAsync(id);
+
+
+			if (package == null || package.ImageData == null)
+			{
+				return NotFound();
+			}
+
+			return File(package.ImageData, "image/jpeg"); 
+		}
+
 
 
 
@@ -81,7 +94,7 @@ namespace TravelistaMVC.Controllers
 				client.DefaultRequestHeaders.Authorization =
 					new AuthenticationHeaderValue("Bearer", token);
 
-				using (var responce = await client.GetAsync($"http://localhost:5101/api/Hotel/GetById/{id}"))
+				using (var responce = await client.GetAsync($"http://kalmahanapi.satbayevproject.kz/api/Hotel/GetById/{id}"))
 				{
 					var result = await responce.Content.ReadAsStringAsync();
 					hotel = JsonConvert.DeserializeObject<Hotel>(result);
@@ -115,7 +128,7 @@ namespace TravelistaMVC.Controllers
 				client.DefaultRequestHeaders.Authorization =
 					new AuthenticationHeaderValue("Bearer", token);
 
-				using (var responce = await client.GetAsync("http://localhost:5101/api/Hotel"))
+				using (var responce = await client.GetAsync("http://kalmahanapi.satbayevproject.kz/api/Hotel"))
 				{
 					var result = await responce.Content.ReadAsStringAsync();
 					hotels = JsonConvert.DeserializeObject<List<Hotel>>(result);
@@ -180,7 +193,7 @@ namespace TravelistaMVC.Controllers
 				client.DefaultRequestHeaders.Authorization =
 					new AuthenticationHeaderValue("Bearer", token);
 
-				using (var responce = await client.GetAsync($"http://localhost:5101/api/Hotel/GetById/{hotelId}"))
+				using (var responce = await client.GetAsync($"http://kalmahanapi.satbayevproject.kz/api/Hotel/GetById/{hotelId}"))
 				{
 					var result = await responce.Content.ReadAsStringAsync();
 					_hotel = JsonConvert.DeserializeObject<Hotel>(result);
